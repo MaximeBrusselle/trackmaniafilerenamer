@@ -15,7 +15,7 @@
 - Have the rename.sh file downloaded
 - Make sure you have the necessary permissions to read from and write to the directories you are working with.
 
-### Windows script (.bat && .ps1)
+### Windows script (.bat and .ps1)
 
 - Have windows lol
 - Have the rename.bat and rename.ps1 file downloaded
