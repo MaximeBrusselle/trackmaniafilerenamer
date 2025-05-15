@@ -8,8 +8,8 @@ def cleanse_filename(filename: str) -> str:
     """
     base_name = filename.split('.Replay.gbx')[0]
     new_filename = base_name.replace(" ", "_")
-    new_filename = re.sub(r"\$[ghimnopstwz]", "", new_filename)
-    new_filename = re.sub(r"\$l\[.*?\]", "", new_filename)
+    new_filename = re.sub(r"\$[g-zG-Z&&[^lL]]", "", new_filename)
+    new_filename = re.sub(r"\$[lL]\[.*?\]", "", new_filename)
     new_filename = new_filename.replace("$l", "")
     new_filename = re.sub(r"\$[0-9a-zA-Z_]{3}", "", new_filename)
     new_filename = new_filename.replace("$$", "$")
