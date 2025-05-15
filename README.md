@@ -1,6 +1,10 @@
 
 # Trackmania files renamer
 
+## General note
+
+Note that for all scripts the first argument (the directory where the replays are stored) needs to exist, the output directory (2nd argument) does not need to exist to work. It will create the directory if it doesn't exist yet
+
 ## Prerequisites
 
 ### Python script (.py)
@@ -28,7 +32,7 @@
 To run the python script, open your terminal or command prompt and navigate to the directory where `rename.py` is located. Use the following command:
 
 ```shell
-python rename.py <path to folder with replays> <path to output folder (doesnt have to exist)>
+python rename.py <path to folder with replays> <path to output folder>
 ```
 
 This will copy the files to the desired output folder and cleanses the name.
@@ -43,7 +47,7 @@ python rename.py <path to folder with replays>
 To run the bash script, open your terminal or command prompt and make sure that you are using a bash shell. Navigate to the directory where rename.sh is located. Use the following commands:
 
 ```shell
-chmod +x rename.sh | ./rename.sh "path/to/directory" "path/to/output/directory (doesnt have to exist)"
+chmod +x rename.sh | ./rename.sh "path/to/directory" "path/to/output/directory"
 ```
 
 This will copy the files to the desired output folder and cleanses the name.
@@ -58,7 +62,7 @@ chmod +x rename.sh | ./rename.sh "path/to/directory"
 To run the bash script, open your terminal or command prompt. Navigate to the directory where rename.bat is located. Use the following commands:
 
 ```shell
-rename.bat path/to/directory path/to/output/directory (doesnt have to exist)
+rename.bat path/to/directory path/to/output/directory
 ```
 
 This will copy the files to the desired output folder and cleanses the name.
