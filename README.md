@@ -14,13 +14,13 @@
 
 To run the script, open your terminal or command prompt and navigate to the directory where `main.py` is located. Use the following command:
 
-```bash
+```shell
 python main.py \<path to folder with replays\> \<path to output folder \(doesnt have to exist\)\>
 ```
 
 If no output folder is passed it will rename the files in that folder, else they will be copied with a renamed filename to the desired output folder which is done as follows:
 
-```bash
+```shell
 python main.py \<path to folder with replays\>
 ```
 
