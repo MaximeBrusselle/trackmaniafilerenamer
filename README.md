@@ -3,14 +3,22 @@
 
 ## Prerequisites
 
-### Python script
+### Python script (.py)
 
 - Ensure you have Python installed on your system.
+- Have the rename.py file downloaded
 - Make sure you have the necessary permissions to read from and write to the directories you are working with.
 
-### Bash script
+### Bash script (.sh)
 
 - Ensure you have a Unix-like environment with Bash installed.
+- Have the rename.sh file downloaded
+- Make sure you have the necessary permissions to read from and write to the directories you are working with.
+
+### Windows script (.bat && .ps1)
+
+- Have windows lol
+- Have the rename.bat and rename.ps1 file downloaded
 - Make sure you have the necessary permissions to read from and write to the directories you are working with.
 
 ## Usage
@@ -43,6 +51,21 @@ If no output folder is passed it will rename the files in that folder, which is 
 
 ```shell
 chmod +x rename.sh | ./rename.sh "path/to/directory"
+```
+
+### Running the bat script
+
+To run the bash script, open your terminal or command prompt. Navigate to the directory where rename.bat is located. Use the following commands:
+
+```shell
+rename.bat path/to/directory path/to/output/directory (doesnt have to exist)
+```
+
+This will copy the files to the desired output folder and cleanses the name.
+If no output folder is passed it will rename the files in that folder, which is done as follows:
+
+```shell
+rename.bat path/to/directory
 ```
 
 ## Questions or feedback

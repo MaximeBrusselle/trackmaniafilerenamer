@@ -41,8 +41,6 @@ find "$directory" -maxdepth 1 -name "*.Replay.gbx" | while read -r file; do
     new_filename=$(echo "$new_filename" | sed 's/\$\$/\$/g')
     new_filename=$(echo "$new_filename" | sed -E 's/_{2,}/_/g')
     
-    new_filename="${new_filename}.Replay.gbx"
-    
     # Show progress
     processed=$((processed + 1))
     if [ $total_files -gt 10 ] && [ $((processed % progress_interval)) -eq 0 ]; then
@@ -51,11 +49,23 @@ find "$directory" -maxdepth 1 -name "*.Replay.gbx" | while read -r file; do
     fi
     
     # Handle file operations
+    index=1
+    base_path=""
+
     if [ ! -z "$out_directory" ]; then
-        cp "$file" "$out_directory/$new_filename"
+        base_path="$out_directory"
+        operation="cp"
     else
-        mv "$file" "$directory/$new_filename"
+        base_path="$directory"
+        operation="mv"
     fi
+
+    destination_path="$base_path/$new_filename.Replay.gbx"
+    while [ -e "$destination_path" ]; do
+        destination_path="$base_path/${new_filename}_$index.Replay.gbx"
+            index=$((index + 1))
+    done
+    $operation "$file" "$destination_path"
 done
 
 # Print success message

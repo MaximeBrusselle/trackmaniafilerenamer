@@ -14,7 +14,15 @@ def cleanse_filename(filename: str) -> str:
     new_filename = re.sub(r"\$[0-9a-zA-Z_]{3}", "", new_filename)
     new_filename = new_filename.replace("$$", "$")
     new_filename = re.sub(r"_{2,}", "_", new_filename)
-    return f"{new_filename}.Replay.gbx"
+    return new_filename
+
+def create_new_path(directory: str, filename: str) -> str:
+    index = 1
+    new_path = os.path.join(directory, f"{filename}.Replay.gbx")
+    while os.path.exists(new_path):
+        new_path = os.path.join(directory, f"{filename}_{index}.Replay.gbx")
+        index += 1
+    return new_path
 
 def rename_files(directory: str, out_directory: str | None = None) -> None:
     """
@@ -30,13 +38,13 @@ def rename_files(directory: str, out_directory: str | None = None) -> None:
             cleansed_filename = cleanse_filename(filename)
             original_path = os.path.join(directory, filename)
             if out_directory:
-                new_path = os.path.join(out_directory, cleansed_filename)
                 os.makedirs(out_directory, exist_ok=True)
+                new_path = create_new_path(out_directory, cleansed_filename)
                 with open(original_path, 'rb') as original_file:
                     with open(new_path, 'wb') as new_file:
                         new_file.write(original_file.read())
             else:
-                new_path = os.path.join(directory, cleansed_filename)
+                new_path = create_new_path(directory, cleansed_filename)
                 os.rename(original_path, new_path)
         if out_directory:
             print(f"Successfully renamed all files from {directory} and saved them to {out_directory}")
